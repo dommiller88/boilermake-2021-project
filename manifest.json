@@ -13,7 +13,8 @@
         "default_title": "TO-DO List!"
     },
     "permissions": [
-        "tabs"
+        "tabs",
+        "storage"
     ]
         
 }
