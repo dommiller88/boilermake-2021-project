@@ -8,7 +8,9 @@
     },
     "options_page": "./options.html",
     "browser_action": {
-        "default_popup": "popup.html"
+        "default_icon": "icon128-circle.png",
+        "default_popup": "popup.html",
+        "default_title": "TO-DO List!"
     },
     "permissions": [
         "tabs"
