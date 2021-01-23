@@ -1,6 +1,7 @@
 const addButton = document.querySelector('.addButton');
 let input = document.querySelector('.input');
 const container = document.querySelector('.container');
+let taskCount = 0;
 
 class item{
     constructor(itemName){
@@ -42,12 +43,17 @@ class item{
 
     remove(item) {
         container.removeChild(item);
+        taskCount--;
+        if(taskCount == 0){
+            document.getElementById()
+        }
     }
 }
 
 function check(){
     if(input.value != ""){
         new item(input.value);
+        taskCount++;
         input.value = "";
     }
 }
@@ -58,3 +64,5 @@ window.addEventListener('keydown', (e) => {
         check();
     }
 })
+
+//new item("Sports");
