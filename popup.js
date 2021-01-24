@@ -1,4 +1,5 @@
 const addButton = document.querySelector('.addButton');
+const urlButton = document.querySelector('.urlButton');
 let input = document.querySelector('.input');
 const container = document.querySelector('.container');
 let taskCount = 0;
@@ -71,6 +72,11 @@ function check(){
         
     }
 }
+
+urlButton.addEventListener('click', () => {
+    chrome.tabs.create({'url': "/options.html" } )
+});
+
 
 addButton.addEventListener('click', check);
 window.addEventListener('keydown', (e) => {
