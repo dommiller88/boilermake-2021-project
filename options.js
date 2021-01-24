@@ -18,10 +18,6 @@ class item{
         let itemBox = document.createElement('div');
         itemBox.classList.add('item');
 
-        let editButton = document.createElement('button');
-        editButton.innerHTML = "EDIT";
-        editButton.classList.add('editButton');
-
         let removeButton = document.createElement('button');
         removeButton.innerHTML = "REMOVE";
         removeButton.classList.add('removeButton');
@@ -29,24 +25,27 @@ class item{
         container.appendChild(itemBox);
 
         itemBox.appendChild(input);
-        itemBox.appendChild(editButton);
         itemBox.appendChild(removeButton);
 
-        editButton.addEventListener('click', () => this.edit(input));
-
-        removeButton.addEventListener('click', () => this.remove(itemBox));
+        removeButton.addEventListener('click', () => this.remove(itemBox, itemName));
     }
 
-    edit(input) {
-        input.disabled = !input.disabled;
-    }
-
-    remove(item) {
+    remove(item, input) {
+        chrome.storage.local.get("tasks", res => {
+            console.log(res.tasks)
+            const toRemove = res.tasks.indexOf(input);
+            res.tasks.splice(toRemove, 1);
+            console.log(res.tasks);
+            chrome.storage.local.set({
+                "tasks": res.tasks
+            });
+        })
         container.removeChild(item);
         taskCount--;
         if(taskCount == 0){
             document.getElementById()
         }
+        
     }
 }
 
