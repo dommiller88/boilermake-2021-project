@@ -80,4 +80,20 @@ window.addEventListener('keydown', (e) => {
     }
 })
 
+window.onload = function(){
+    chrome.storage.local.get("tasks", res => {
+        if (res == undefined) {
+            chrome.storage.local.set({
+                "tasks": []
+            });
+        }
+        else {
+            for(let i = 0; i < res.tasks.length; i++) {
+                new item(res.tasks[i]);
+            }
+        }
+        
+    })
+}
+
 //new item("Sports");
