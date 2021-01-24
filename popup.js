@@ -51,10 +51,18 @@ class item{
 }
 
 function check(){
+    console.log("hello");
     if(input.value != ""){
         new item(input.value);
         taskCount++;
-        input.value = "";
+        chrome.storage.local.get("tasks", res => {
+            res.tasks.push(input.value);
+            chrome.storage.local.set({
+                "tasks": res.tasks
+            })
+            input.value = "";
+        })
+        
     }
 }
 
