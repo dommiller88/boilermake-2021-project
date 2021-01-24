@@ -1,6 +1,6 @@
 {
-    "name": "obj ext",
-    "description": "my ext",
+    "name": "Web Blocker",
+    "description": "Be productive, be yourself",
     "version": "0.1.0",
     "manifest_version": 2,
     "background": {
