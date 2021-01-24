@@ -1,9 +1,3 @@
-const url = 'https://www.desmos.com/*'
-const url2 = 'https://www.gradescope.com/*'
-chrome.storage.local.set({
-    "sites": [url, url2]
-});
-
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     chrome.storage.local.get("sites", sites => {
@@ -23,10 +17,3 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     
 })
 
-/*
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    chrome.storage.local.get("tasks", res => {
-        console.log(res.tasks);
-    })
-})
-*/

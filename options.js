@@ -31,13 +31,13 @@ class item{
     }
 
     remove(item, input) {
-        chrome.storage.local.get("tasks", res => {
-            console.log(res.tasks)
-            const toRemove = res.tasks.indexOf(input);
-            res.tasks.splice(toRemove, 1);
-            console.log(res.tasks);
+        chrome.storage.local.get("sites", res => {
+            console.log(res.sites)
+            const toRemove = res.sites.indexOf(input);
+            res.sites.splice(toRemove, 1);
+            console.log(res.sites);
             chrome.storage.local.set({
-                "tasks": res.tasks
+                "sites": res.sites
             });
         })
         container.removeChild(item);
@@ -52,24 +52,27 @@ class item{
 function check(){
     console.log("hello");
     if(input.value != ""){
+        console.log("success");
+        input.value.concat("/*")
         new item(input.value);
         taskCount++;
-        chrome.storage.local.get("tasks", res => {
-            if (res.tasks == undefined) {
+        chrome.storage.local.get("sites", res => {
+            if (res.sites == undefined) {
                 chrome.storage.local.set({
-                    "tasks": [input.value]
+                    "sites": [input.value]
                 })
             }
             else {
-                res.tasks.push(input.value);
+                res.sites.push(input.value);
                 chrome.storage.local.set({
-                    "tasks": res.tasks
+                    "sites": res.sites
                 })
             }
             input.value = "";
         })
         
     }
+
 }
 
 addButton.addEventListener('click', check);
@@ -80,15 +83,15 @@ window.addEventListener('keydown', (e) => {
 })
 
 window.onload = function(){
-    chrome.storage.local.get("tasks", res => {
+    chrome.storage.local.get("sites", res => {
         if (res == undefined) {
             chrome.storage.local.set({
-                "tasks": []
+                "sites": []
             });
         }
         else {
-            for(let i = 0; i < res.tasks.length; i++) {
-                new item(res.tasks[i]);
+            for(let i = 0; i < res.sites.length; i++) {
+                new item(res.sites[i]);
             }
         }
         
