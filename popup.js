@@ -56,10 +56,17 @@ function check(){
         new item(input.value);
         taskCount++;
         chrome.storage.local.get("tasks", res => {
-            res.tasks.push(input.value);
-            chrome.storage.local.set({
-                "tasks": res.tasks
-            })
+            if (res.tasks == undefined) {
+                chrome.storage.local.set({
+                    "tasks": [input.value]
+                })
+            }
+            else {
+                res.tasks.push(input.value);
+                chrome.storage.local.set({
+                    "tasks": res.tasks
+                })
+            }
             input.value = "";
         })
         
