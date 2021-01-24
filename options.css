@@ -20,7 +20,7 @@ h1{
 
 .styling{
     font-weight: 800;
-    color: lime;
+    color: goldenrod;
 }
 
 .input_div{
@@ -50,7 +50,7 @@ h1{
     border: none;
     color: #fff;
     margin: 0.25rem;
-    background-color: lime;
+    background-color: goldenrod;
     cursor: pointer;
     font-size: x-large;
 }
@@ -97,7 +97,7 @@ h1{
     font-size: 1.4rem;
     background: none;
     outline: none;
-    color: #E00;
+    color: goldenrod;
     border: none;
     cursor: pointer;
 }
